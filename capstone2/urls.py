@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from capstone.views import Home, About
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', Home.as_view()),
+    path('about/', About.as_view())
 ]
