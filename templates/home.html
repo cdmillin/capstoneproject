@@ -9,4 +9,31 @@
     <li><input type="text" placeholder="Search.." ></li>
 </ul>
 
+<form action = "" method = "POST">
+    {% csrf_token %}
+    <label for="location">Location: </label>
+    <input id="location" type="text" name="location">
+    <input type="submit" value="OK">
+    <h1>Your location is: {{ location }}</h1>
+    <h2>Top cities in: {{ location }}</h2>
+    {% for city in cities %}
+        <h3>{{ city }}</h3>
+        </br>
+        <h4>Top restaurants in: {{ city }}</h4>
+        </br>
+        {% for restaurant in restaurants %}
+            {{ restaurant }}
+{#            <p id="container"></p>#}
+{#            <script type="text/javascript">#}
+{#                const restaurant = String("{{ restaurant }}")#}
+{#                const city = String("{{ city }}")#}
+{#                if(restaurant.includes(city)){#}
+{#                    document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + restaurant;#}
+{#                }#}
+{#            </script>#}
+        {% endfor %}
+        </br>
+    {% endfor %}
+</form>
+
 {% endblock %}
