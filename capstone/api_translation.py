@@ -32,8 +32,7 @@ class Api_Translation:
 
         restaurant_data = response.json()['results']
         for x in restaurant_data:
-            restaurants.append(x['name'])
-
+            restaurants.append([x['name'], x['intro']])
         return restaurants
 
 

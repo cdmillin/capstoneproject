@@ -16,13 +16,16 @@
     <input type="submit" value="OK">
     <h1>Your location is: {{ location }}</h1>
     <h2>Top cities in: {{ location }}</h2>
-    {% for city in cities %}
-        <h3>{{ city }}</h3>
-        </br>
-        <h4>Top restaurants in: {{ city }}</h4>
-        </br>
-        {% for restaurant in restaurants %}
-            {{ restaurant }}
+        {% for key, value in restaurants.items %}
+            <h2>{{ key }}</h2>
+            <h4>Top restaurants in: {{ key }}</h4>
+            </br>
+            {% for v in value %}
+                <h4>{{ v.0 }}</h4>
+                <h5>{{ v.1 }}</h5>
+                {% endfor %}
+            </br>
+
 {#            <p id="container"></p>#}
 {#            <script type="text/javascript">#}
 {#                const restaurant = String("{{ restaurant }}")#}
@@ -33,7 +36,6 @@
 {#            </script>#}
         {% endfor %}
         </br>
-    {% endfor %}
 </form>
 
 {% endblock %}
