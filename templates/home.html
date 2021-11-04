@@ -33,4 +33,33 @@
         <p>{{ location3info }}</p>
     </div>
 
+<form action = "" method = "POST">
+    {% csrf_token %}
+    <label for="location">Location: </label>
+    <input id="location" type="text" name="location">
+    <input type="submit" value="OK">
+    <h1>Your location is: {{ location }}</h1>
+    <h2>Top cities in: {{ location }}</h2>
+        {% for key, value in restaurants.items %}
+            <h2>{{ key }}</h2>
+            <h4>Top restaurants in: {{ key }}</h4>
+            </br>
+            {% for v in value %}
+                <h4>{{ v.0 }}</h4>
+                <h5>{{ v.1 }}</h5>
+                {% endfor %}
+            </br>
+
+{#            <p id="container"></p>#}
+{#            <script type="text/javascript">#}
+{#                const restaurant = String("{{ restaurant }}")#}
+{#                const city = String("{{ city }}")#}
+{#                if(restaurant.includes(city)){#}
+{#                    document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + restaurant;#}
+{#                }#}
+{#            </script>#}
+        {% endfor %}
+        </br>
+</form>
+
 {% endblock %}
