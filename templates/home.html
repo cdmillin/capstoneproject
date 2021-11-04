@@ -1,13 +1,37 @@
 {% extends 'template.html' %}
 
 {% block content %}
+<style>
+
+.column {
+  float: left;
+  width: 30%;
+  padding: 10px;
+}
+</style>
 
 <ul>
-    <li><a style="color:white;">Trip Planner</a></li>
+    <li><sitename style="color:white;">Travel Pal</sitename></li>
     <li><a class="active">Home</a></li>
     <li><a href="about">About</a></li>
     <li><input type="text" placeholder="Search.." ></li>
 </ul>
+        <h1 align="center">Popular Destinations</h1>
+
+    <div class="column">
+      <h2>{{ location1 }}</h2>
+      <p>{{ location1info }}</p>
+    </div>
+
+    <div class="column">
+        <h2>{{ location2 }}</h2>
+        <p>{{ location2info }}</p>
+    </div>
+
+    <div class="column">
+        <h2>{{ location3 }}</h2>
+        <p>{{ location3info }}</p>
+    </div>
 
 <form action = "" method = "POST">
     {% csrf_token %}
