@@ -8,6 +8,18 @@
   width: 30%;
   padding: 10px;
 }
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+}
+
+.astext:hover {
+    color:#04AA6D;
+}
 </style>
 
 <ul>
@@ -41,7 +53,7 @@
     <h1>Your location is: {{ location }}</h1>
     <h2>Top cities in: {{ location }}</h2>
         {% for key, value in restaurants.items %}
-            <h2>{{ key }}</h2>
+            <button class="astext"> <h2>{{ key }}</h2></button>
             <h4>Top restaurants in: {{ key }}</h4>
             </br>
             {% for v in value %}
