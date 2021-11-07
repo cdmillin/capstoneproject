@@ -29,10 +29,13 @@ class Home(View):
     def post(self, request):
         if 'citybtn' in request.POST:
             city = request.POST.get('citybtn', "")
+            city_formatted = city.replace(",", "2C").replace(" ", "_")
 
-            restaurants = {city.replace("2C", ",").replace("_", " "): api_translator.find_best_resturants(city)}
+            restaurants = {city: api_translator.find_best_resturants(city_formatted)}
+            hotels = {city: api_translator.find_best_hotels(city_formatted)}
+            sights = {city: api_translator.find_best_sightseeing(city_formatted)}
 
-            return render(request, "city.html", {'city': city, 'restaurants': restaurants})
+            return render(request, "city.html", {'city': city, 'restaurants': restaurants, 'sights': sights, 'hotels': hotels})
 
         elif 'location' in request.POST:
             location = str(request.POST.get("location", "")).title()

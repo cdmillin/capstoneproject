@@ -21,6 +21,7 @@ class Api_Translation:
         return cities
 
     def find_best_resturants(self, location):
+        print(location)
         awaiting_submission = "https://www.triposo.com/api/20211011/poi.json?location_id=" + location + "&tag_labels=eatingout&count=2&fields=id,name,score,intro,tag_labels,best_for&order_by=-score"
         # Using headers=auth when calling request sends authentication to avoid 401 error code
         response = requests.get(awaiting_submission, headers=auth)
@@ -36,7 +37,7 @@ class Api_Translation:
         return restaurants
 
     def find_best_hotels(self, location):
-        awaiting_submission = "https://www.triposo.com/api/20211011/poi.json?location_id=" + location + "&tag_labels=eatingout&count=2&fields=id,name,score,intro,tag_labels,best_for&order_by=-score"
+        awaiting_submission = "https://www.triposo.com/api/20211011/poi.json?location_id=" + location + "&tag_labels=hotels&count=2&fields=id,name,score,intro,tag_labels,best_for&order_by=-score"
         # Using headers=auth when calling request sends authentication to avoid 401 error code
         response = requests.get(awaiting_submission, headers=auth)
         hotels = []
@@ -49,6 +50,21 @@ class Api_Translation:
         for x in hotels_data:
             hotels.append([x['name'], x['intro']])
         return hotels
+
+    def find_best_sightseeing(self, location):
+        awaiting_submission = "https://www.triposo.com/api/20211011/poi.json?location_id=" + location + "&tag_labels=sightseeing&count=2&fields=id,name,score,intro,tag_labels,best_for&order_by=-score"
+        # Using headers=auth when calling request sends authentication to avoid 401 error code
+        response = requests.get(awaiting_submission, headers=auth)
+        sights = []
+
+        if response.status_code != 200:
+            print("Error requesting data from Triposo API: ", response.status_code)
+            return sights
+
+        sights_data = response.json()['results']
+        for x in sights_data:
+            sights.append([x['name'], x['intro']])
+        return sights
 
 if __name__ == '__main__':
     api = Api_Translation()

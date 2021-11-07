@@ -43,36 +43,39 @@ input:checked + label + .content {
 <form action = "" method = "POST">
     {% csrf_token %}
         <h1>{{ city }}</h1>
-
         <input type="checkbox" id="restaurants" />
         <label for="restaurants">Restaurants</label>
-
         <div class="content">
         {% for key, value in restaurants.items %}
             {% for v in value %}
                 <h4>{{ v.0 }}</h4>
                 <h5>{{ v.1 }}</h5>
-                {% endfor %}
+            {% endfor %}
             </br>
+        {% endfor %}
         </div>
-
-        <input type="checkbox" id="title2" />
-        <label for="title2">Sightseeing</label>
-
+        <input type="checkbox" id="hotels" />
+        <label for="hotels">Hotels</label>
         <div class="content">
-        <p>Your content goes here.</p>
+        {% for key, value in hotels.items %}
+            {% for v in value %}
+                <h4>{{ v.0 }}</h4>
+                <h5>{{ v.1 }}</h5>
+            {% endfor %}
+            </br>
+        {% endfor %}
         </div>
-
-        <input type="checkbox" id="title3" />
-        <label for="title3">Hotels</label>
-
+        <input type="checkbox" id="sights" />
+        <label for="sights">Sightseeing</label>
         <div class="content">
-        <p>Your content goes here.</p>
+        {% for key, value in sights.items %}
+            {% for v in value %}
+                <h4>{{ v.0 }}</h4>
+                <h5>{{ v.1 }}</h5>
+            {% endfor %}
+            </br>
+        {% endfor %}
         </div>
-
-
-    {% endfor %}
-    </br>
 </form>
 
 {% endblock %}
