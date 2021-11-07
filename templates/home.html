@@ -52,26 +52,10 @@
     <input type="submit" value="OK">
     <h1>Your location is: {{ location }}</h1>
     <h2>Top cities in: {{ location }}</h2>
-        {% for key, value in restaurants.items %}
-            <button class="astext"> <h2>{{ key }}</h2></button>
-            <h4>Top restaurants in: {{ key }}</h4>
+        {% for city in cities %}
+            <button class="astext" type='submit' name="citybtn" value="{{ city }}"> <h2>{{ city }}</h2></button>
             </br>
-            {% for v in value %}
-                <h4>{{ v.0 }}</h4>
-                <h5>{{ v.1 }}</h5>
-                {% endfor %}
-            </br>
-
-{#            <p id="container"></p>#}
-{#            <script type="text/javascript">#}
-{#                const restaurant = String("{{ restaurant }}")#}
-{#                const city = String("{{ city }}")#}
-{#                if(restaurant.includes(city)){#}
-{#                    document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + restaurant;#}
-{#                }#}
-{#            </script>#}
         {% endfor %}
-        </br>
 </form>
 
 {% endblock %}

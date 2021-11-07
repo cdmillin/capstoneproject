@@ -35,6 +35,20 @@ class Api_Translation:
             restaurants.append([x['name'], x['intro']])
         return restaurants
 
+    def find_best_hotels(self, location):
+        awaiting_submission = "https://www.triposo.com/api/20211011/poi.json?location_id=" + location + "&tag_labels=eatingout&count=2&fields=id,name,score,intro,tag_labels,best_for&order_by=-score"
+        # Using headers=auth when calling request sends authentication to avoid 401 error code
+        response = requests.get(awaiting_submission, headers=auth)
+        hotels = []
+
+        if response.status_code != 200:
+            print("Error requesting data from Triposo API: ", response.status_code)
+            return hotels
+
+        hotels_data = response.json()['results']
+        for x in hotels_data:
+            hotels.append([x['name'], x['intro']])
+        return hotels
 
 if __name__ == '__main__':
     api = Api_Translation()
