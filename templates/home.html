@@ -8,6 +8,18 @@
   width: 30%;
   padding: 10px;
 }
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+}
+
+.astext:hover {
+    color:#04AA6D;
+}
 </style>
 
 <ul>
@@ -16,7 +28,7 @@
     <li><a href="about">About</a></li>
     <li><input type="text" placeholder="Search.." ></li>
 </ul>
-        <h1 align="center">Popular Destinations</h1>
+        {# <h1 align="center">Popular Destinations</h1> #}
 
     <div class="column">
       <h2>{{ location1 }}</h2>
@@ -40,26 +52,10 @@
     <input type="submit" value="OK">
     <h1>Your location is: {{ location }}</h1>
     <h2>Top cities in: {{ location }}</h2>
-        {% for key, value in restaurants.items %}
-            <h2>{{ key }}</h2>
-            <h4>Top restaurants in: {{ key }}</h4>
+        {% for city in cities %}
+            <button class="astext" type='submit' name="citybtn" value="{{ city }}"> <h2>{{ city }}</h2></button>
             </br>
-            {% for v in value %}
-                <h4>{{ v.0 }}</h4>
-                <h5>{{ v.1 }}</h5>
-                {% endfor %}
-            </br>
-
-{#            <p id="container"></p>#}
-{#            <script type="text/javascript">#}
-{#                const restaurant = String("{{ restaurant }}")#}
-{#                const city = String("{{ city }}")#}
-{#                if(restaurant.includes(city)){#}
-{#                    document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + restaurant;#}
-{#                }#}
-{#            </script>#}
         {% endfor %}
-        </br>
 </form>
 
 {% endblock %}

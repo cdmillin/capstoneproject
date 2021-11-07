@@ -1,6 +1,53 @@
 {% extends 'template.html' %}
 
 {% block content %}
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+</style>
 
 <ul>
     <li><sitename style="color:white;">Travel Pal</sitename></li>
@@ -9,5 +56,44 @@
   <li><input type="text" placeholder="Search.." ></li>
 </ul>
 
-    <h1 align="center">About Travel Pal</h1>
+<div class="about-section">
+  <h1>About Us</h1>
+</div>
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <h2>Created by Team 3</h2>
+        <p>This travel site assist users by providing information on popular attractions in their intended destinations.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="https://media.bizj.us/view/img/11681734/uwmcampuscoverstory-005*1200xx4730-2661-0-269.jpg" alt="University of Wisconsin - Milwaukee" style="width:100%">
+      <div class="container">
+        <h2>University of Wisconsin - Milwaukee</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p>
+            <a href = "mailto: thongsou@uwm.edu">thongsou.uwm.edu</a></br>
+            <a href = "mailto: bpdemuri@uwm.edu">bpdemuri@uwm.edu</a></br>
+            <a href = "mailto: wbarrera@uwm.edu">wbarrera@uwm.edu</a></br>
+            <a href = "mailto: cdmillin@uwm.edu">cdmillin@uwm.edu</a></br>
+            <a href = "mailto: patel93@uwm.edu">patel93@uwm.edu</a></br>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
