@@ -26,28 +26,18 @@
     <li><sitename style="color:white;">Travel Pal</sitename></li>
     <li><a class="active">Home</a></li>
     <li><a href="about">About</a></li>
-    <li><input type="text" placeholder="Search.." ></li>
+    <li>
+        <form action="", method="post">
+            {% csrf_token %}
+        <input id="location" placeholder="Enter State/Country.." type="text" name="location">
+        </form>
+    </li>
 </ul>
         {# <h1 align="center">Popular Destinations</h1> #}
 
-    <div class="column">
-      <h2>{{ location1 }}</h2>
-      <p>{{ location1info }}</p>
-    </div>
-
-    <div class="column">
-        <h2>{{ location2 }}</h2>
-        <p>{{ location2info }}</p>
-    </div>
-
-    <div class="column">
-        <h2>{{ location3 }}</h2>
-        <p>{{ location3info }}</p>
-    </div>
-
 <form action = "" method = "POST">
     {% csrf_token %}
-    <label for="location">Location: </label>
+    <label for="location"><B>Location: </B></label>
     <input id="location" type="text" name="location">
     <input type="submit" value="OK">
     <h1>Your location is: {{ location }}</h1>

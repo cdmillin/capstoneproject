@@ -39,6 +39,17 @@ input:checked + label + .content {
 }
 </style>
 
+<ul>
+    <li><sitename style="color:white;">Travel Pal</sitename></li>
+    <li><a href="">Home</a></li>
+    <li><a href="about">About</a></li>
+    <li>
+        <form action="", method="post">
+            {% csrf_token %}
+        <input id="location" placeholder="Enter State/Country.." type="text" name="location">
+        </form>
+    </li>
+</ul>
 
 <form action = "" method = "POST">
     {% csrf_token %}
