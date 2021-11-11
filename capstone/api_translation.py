@@ -58,7 +58,7 @@ class Api_Translation:
 
     def find_beaches_in_city(self, location):
         awaiting_submission = "https://www.triposo.com/api/20211011/poi.json?location_id=" + location + \
-                              "&tag_labels=national_parks&count=2&fields=id,name,score,intro,tag_labels,best_for" \
+                              "&tag_labels=beaches&count=2&fields=id,name,score,intro,tag_labels,best_for" \
                               "&order_by=-score"
         # Using headers=auth when calling request sends authentication to avoid 401 error code
         response = requests.get(awaiting_submission, headers=auth)
@@ -75,7 +75,7 @@ class Api_Translation:
 
     def find_sightseeing_in_city(self, location):
         awaiting_submission = "https://www.triposo.com/api/20211011/poi.json?location_id=" + location + \
-                              "&tag_labels=national_parks&count=2&fields=id,name,score,intro,tag_labels,best_for" \
+                              "&tag_labels=sightseeing&count=2&fields=id,name,score,intro,tag_labels,best_for" \
                               "&order_by=-score"
         # Using headers=auth when calling request sends authentication to avoid 401 error code
         response = requests.get(awaiting_submission, headers=auth)
@@ -92,24 +92,7 @@ class Api_Translation:
 
     def find_shopping_in_city(self, location):
         awaiting_submission = "https://www.triposo.com/api/20211011/poi.json?location_id=" + location + \
-                              "&tag_labels=national_parks&count=2&fields=id,name,score,intro,tag_labels,best_for" \
-                              "&order_by=-score"
-        # Using headers=auth when calling request sends authentication to avoid 401 error code
-        response = requests.get(awaiting_submission, headers=auth)
-        shopping = []
-
-        if response.status_code != 200:
-            print("Error requesting data from Triposo API: ", response.status_code)
-            return shopping
-
-        shopping_data = response.json()['results']
-        for x in shopping_data:
-            shopping.append([x['name'], x['intro']])
-        return shopping
-
-    def find_shopping_in_city(self, location):
-        awaiting_submission = "https://www.triposo.com/api/20211011/poi.json?location_id=" + location + \
-                              "&tag_labels=national_parks&count=2&fields=id,name,score,intro,tag_labels,best_for" \
+                              "&tag_labels=shopping&count=2&fields=id,name,score,intro,tag_labels,best_for" \
                               "&order_by=-score"
         # Using headers=auth when calling request sends authentication to avoid 401 error code
         response = requests.get(awaiting_submission, headers=auth)
@@ -126,7 +109,7 @@ class Api_Translation:
 
     def find_transport_in_city(self, location):
         awaiting_submission = "https://www.triposo.com/api/20211011/poi.json?location_id=" + location + \
-                              "&tag_labels=national_parks&count=2&fields=id,name,score,intro,tag_labels,best_for" \
+                              "&tag_labels=transport&count=2&fields=id,name,score,intro,tag_labels,best_for" \
                               "&order_by=-score"
         # Using headers=auth when calling request sends authentication to avoid 401 error code
         response = requests.get(awaiting_submission, headers=auth)
@@ -140,6 +123,23 @@ class Api_Translation:
         for x in transport_data:
             transport.append([x['name'], x['intro']])
         return transport
+
+    def find_hotels_in_city(self, location):
+        awaiting_submission = "https://www.triposo.com/api/20211011/poi.json?location_id=" + location + \
+                              "&tag_labels=hotels&count=2&fields=id,name,score,intro,tag_labels,best_for" \
+                              "&order_by=-score"
+        # Using headers=auth when calling request sends authentication to avoid 401 error code
+        response = requests.get(awaiting_submission, headers=auth)
+        hotels = []
+
+        if response.status_code != 200:
+            print("Error requesting data from Triposo API: ", response.status_code)
+            return hotels
+
+        hotels_data = response.json()['results']
+        for x in hotels_data:
+            hotels.append([x['name'], x['intro']])
+        return hotels
 
 if __name__ == 'shopping':
     api = Api_Translation()
