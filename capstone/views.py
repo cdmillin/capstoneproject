@@ -7,6 +7,7 @@ api_translator = Api_Translation()
 # Create your views here.
 class Home(View):
     def get(self, request):
+
         #location names are filled with string Destination as a placeholder.
         #replace locationNames with popular destinations received from api.
         #location info is also filled with a placeholder string.
@@ -83,3 +84,5 @@ class City(View):
             print(city)
 
         return render(request, "city.html", {'city': city})
+
+
