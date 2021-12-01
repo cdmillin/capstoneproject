@@ -10,6 +10,7 @@
 }
 
 .astext {
+    color: mediumblue;
     background:none;
     border:none;
     margin:0;
@@ -25,7 +26,7 @@
 <ul>
     <li><sitename style="color:white;">Travel Pal</sitename></li>
     <li><a class="active">Home</a></li>
-    <li><a href="about">About</a></li>
+    <li><a href="../about">About</a></li>
     <li>
         <form action="", method="post">
             {% csrf_token %}
@@ -37,9 +38,7 @@
 
 <form action = "" method = "POST">
     {% csrf_token %}
-    <label for="location"><B>Location: </B></label>
-    <input id="location" type="text" name="location">
-    <input type="submit" value="OK">
+
     <h1>Your location is: {{ location }}</h1>
     <h2>Top cities in: {{ location }}</h2>
         {% for city in cities %}

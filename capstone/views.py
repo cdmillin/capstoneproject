@@ -83,3 +83,11 @@ class City(View):
             print(city)
 
         return render(request, "city.html", {'city': city})
+
+
+class Refinedsearch(View):
+    def get(self, request):
+        return render(request, "refinedsearch.html")
+
+    def post(self, request):
+        pass
