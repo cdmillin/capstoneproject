@@ -32,8 +32,8 @@ class Home(View):
             city_formatted = city.replace(",", "2C").replace(" ", "_")
 
             restaurants = {city: api_translator.find_best_resturants(city_formatted)}
-            hotels = {city: api_translator.find_best_hotels(city_formatted)}
-            sights = {city: api_translator.find_best_sightseeing(city_formatted)}
+            hotels = {city: api_translator.find_hotels_in_city(city_formatted)}
+            sights = {city: api_translator.find_sightseeing_in_city(city_formatted)}
 
             return render(request, "city.html", {'city': city, 'restaurants': restaurants, 'sights': sights, 'hotels': hotels})
 
