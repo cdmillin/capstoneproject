@@ -1,5 +1,5 @@
 {% extends 'template.html' %}
-{% load static %}
+
 {% block content %}
 <style>
 
@@ -10,6 +10,7 @@
 }
 
 .astext {
+    color: mediumblue;
     background:none;
     border:none;
     margin:0;
@@ -29,45 +30,21 @@
     <li>
         <form action="", method="post">
             {% csrf_token %}
-        <input id="location" placeholder="Enter State..." type="text" name="location">
+        <input id="location" placeholder="Enter State/Country.." type="text" name="location">
         </form>
     </li>
 </ul>
-         <h1 align="center">Popular Destinations</h1>
-    <table>
-    <form action = "" method = "POST">
+        {# <h1 align="center">Popular Destinations</h1> #}
+
+<form action = "" method = "POST">
     {% csrf_token %}
-        <tr>
-            <th>
-                <button class="astext" style="color: blue" type='submit' name="citybtn" value="Orlando, Florida"> <h2>#1 Orlando, Florida</h2></button>
-                </br> Home to seven of the world’s top theme parks, Orlando is the country’s No. 1 favorite family vacation destination with legendary theme parks, world-class water parks, outdoor thrill rides and activities in nature. With 450 hotels, visitors have choices from multi-acre resorts to themed boutique hotels. Orlando’s trusted theme parks, attractions, hotels and businesses have developed comprehensive safety measures and worked closely with medical experts to create safe travel experiences
-            </th>
-            <th>
-                <button class="astext" style="color: blue" type='submit' name="citybtn" value="New York City"> <h2>#2 New York City, New York</h2></button>
-                </br> As the most populous city in the U.S. – set at the forefront of food, fashion and the arts – NYC requires stamina. But don't let the Big Apple's frenetic sights and sounds intimidate you from soaking up its grandeur. Enlist the help of a local to help you navigate it all. Wander through the concrete jungle and you'll discover roaring taxis zipping down bustling blocks, fast-paced pedestrians strolling past on their way to marquee galleries and trendy cocktail bars, and Times Square's neon lights flickering at all hours
-            </th>
-            <th>
-                <button class="astext" style="color: blue" type='submit' name="citybtn" value="Chicago"> <h2>#3 Chicago, Illinois</h2></button>
-                </br> Chicago the windy city has many sights to see such as Millenium Park, Navy Pier, Chicago Riverwalk, Adler Planetarium, Shedd Aquairum, Skydeck, field museum, and much more. With over 7,000 resturanuts, Theres no chance you cannot find something you are craving for. Home to stamples such as deep dish pizza, italian beef sandwich, and chicago style hotdogs. Chicago's nightlife is no thing to shy on either with hopping rooftop bars and fun nightclubs, you are sure to have a great time here.
-        </tr>
 
-        <tr>
-            <th>
-                <button class="astext" style="color: blue" type='submit' name="citybtn" value="Anaheim, California"> <h2>#4 Anaheim, California</h2></button>
-               </br> This dynamic Orange County hub is home to Disneyland Resort, the Los Angeles Angels baseball team, and the Anaheim Ducks hockey team—plus a whole lot more that may surprise you. If you haven’t taken the time to explore Anaheim, you have multiple fun discoveries ahead.
-
-            </th>
-
-            </th>
-            <th>
-                <button class="astext" style="color: blue" type='submit' name="citybtn" value="Miami"> <h2>#5 Miami, Florida</h2></button>
-                </br> With good weather all year round, and beautiful beaches why wouldn't you want to take a trip to Miami, Florida. Miami is known for partying all day and night. If partying is not your thing, theres plenty more that this place has to offer with a thriving visual and performing arts scenes. With cuban influence all over you can indulge in some amazing cuisine too.
-            <th>
-                <button class="astext" style="color: blue" type='submit' name="citybtn" value="Las Vegas"> <h2>#6 Las Vegas, Nevada</h2></button>
-                </br> The las Vegas strip offers plenty of entertainment, food, and sights to see. The crazy lights and live performances will keep you on the edge of your seat. You can't go to Vegas and not expect to see a slot machine 20 ft from you. Surrounding Vegas are beautiful valleys and exploring to do. Visit a ghost town or take a look at abandon mines, Vegas has much to offer so take a stop and spend some money!
-            </th>
-        </tr>
-    </form>
-    </table>
+    <h1>Your location is: {{ location }}</h1>
+    <h2>Top cities in: {{ location }}</h2>
+        {% for city in cities %}
+            <button class="astext" type='submit' name="citybtn" value="{{ city }}"> <h2>{{ city }}</h2></button>
+            </br>
+        {% endfor %}
+</form>
 
 {% endblock %}
