@@ -53,7 +53,11 @@ html {
     <li><sitename style="color:white;">Travel Pal</sitename></li>
   <li><a href="/">Home</a></li>
   <li><a class="active">About</a></li>
-  <li><input type="text" placeholder="Search.." ></li>
+  <li>
+      <form action="", method="post">
+            {% csrf_token %}
+        <input id="location" placeholder="Enter State/Country.." type="text" name="location">
+        </form></li>
 </ul>
 
 <div class="about-section">
