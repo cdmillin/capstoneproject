@@ -12,7 +12,7 @@ class Api_Translation:
         # Using headers=auth when calling request sends authentication to avoid 401 error code
         response = requests.get(awaiting_submission, headers=auth)
         response_items = []
-        print(awaiting_submission)
+
         if response.status_code != 200:
             print("Error requesting data from Triposo API: ", response.status_code)
             return response_items

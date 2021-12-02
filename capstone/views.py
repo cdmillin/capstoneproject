@@ -34,12 +34,14 @@ class Home(View):
             restaurants = {city: api_translator.universal_api_response(city_formatted, "eatingout")}
             hotels = {city: api_translator.universal_api_response(city_formatted, "hotels")}
             sights = {city: api_translator.universal_api_response(city_formatted, "sightseeing")}
-            # transport = {city: api_translator.universal_api_response(city_formatted, "transport")}
-            # shopping = {city: api_translator.universal_api_response(city_formatted, "shopping")}
-            # beaches = {city: api_translator.universal_api_response(city_formatted, "beaches")}
-            # parks = {city: api_translator.universal_api_response(city_formatted, "national_parks")}
+            transport = {city: api_translator.universal_api_response(city_formatted, "transport")}
+            shopping = {city: api_translator.universal_api_response(city_formatted, "shopping")}
+            beaches = {city: api_translator.universal_api_response(city_formatted, "beaches")}
+            parks = {city: api_translator.universal_api_response(city_formatted, "national_parks")}
 
-            return render(request, "city.html", {'city': city, 'restaurants': restaurants, 'sights': sights, 'hotels': hotels})
+            return render(request, "city.html", {'city': city, 'restaurants': restaurants, 'sights': sights,
+                                                 'hotels': hotels, 'transport': transport, 'shopping': shopping,
+                                                 'beaches': beaches, 'parks': parks})
 
         elif 'location' in request.POST:
             location = str(request.POST.get("location", "")).title()

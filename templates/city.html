@@ -84,6 +84,50 @@ input:checked + label + .content {
             </br>
         {% endfor %}
         </div>
+        <input type="checkbox" id="transport" hidden/>
+        <label for="transport">Transport</label>
+        <div class="content">
+        {% for key, value in transport.items %}
+            {% for v in value %}
+                <h4>{{ v.0 }}</h4>
+                <h5>{{ v.1 }}</h5>
+            {% endfor %}
+            </br>
+        {% endfor %}
+        </div>
+        <input type="checkbox" id="shopping" hidden/>
+        <label for="shopping">Shopping</label>
+        <div class="content">
+        {% for key, value in shopping.items %}
+            {% for v in value %}
+                <h4>{{ v.0 }}</h4>
+                <h5>{{ v.1 }}</h5>
+            {% endfor %}
+            </br>
+        {% endfor %}
+        </div>
+{#        <input type="checkbox" id="parks" hidden/>#}
+{#        <label for="parks">National Parks</label>#}
+{#        <div class="content">#}
+{#        {% for key, value in parks.items %}#}
+{#            {% for v in value %}#}
+{#                <h4>{{ v.0 }}</h4>#}
+{#                <h5>{{ v.1 }}</h5>#}
+{#            {% endfor %}#}
+{#            </br>#}
+{#        {% endfor %}#}
+{#        </div>#}
+{#        <input type="checkbox" id="beaches" hidden/>#}
+{#        <label for="beaches">Beaches</label>#}
+{#        <div class="content">#}
+{#        {% for key, value in beaches.items %}#}
+{#            {% for v in value %}#}
+{#                <h4>{{ v.0 }}</h4>#}
+{#                <h5>{{ v.1 }}</h5>#}
+{#            {% endfor %}#}
+{#            </br>#}
+{#        {% endfor %}#}
+{#        </div>#}
 </form>
 
 {% endblock %}
