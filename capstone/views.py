@@ -31,9 +31,13 @@ class Home(View):
             city = request.POST.get('citybtn', "")
             city_formatted = city.replace(",", "2C").replace(" ", "_")
 
-            restaurants = {city: api_translator.find_best_resturants(city_formatted)}
-            hotels = {city: api_translator.find_hotels_in_city(city_formatted)}
-            sights = {city: api_translator.find_sightseeing_in_city(city_formatted)}
+            restaurants = {city: api_translator.universal_api_response(city_formatted, "eatingout")}
+            hotels = {city: api_translator.universal_api_response(city_formatted, "hotels")}
+            sights = {city: api_translator.universal_api_response(city_formatted, "sightseeing")}
+            # transport = {city: api_translator.universal_api_response(city_formatted, "transport")}
+            # shopping = {city: api_translator.universal_api_response(city_formatted, "shopping")}
+            # beaches = {city: api_translator.universal_api_response(city_formatted, "beaches")}
+            # parks = {city: api_translator.universal_api_response(city_formatted, "national_parks")}
 
             return render(request, "city.html", {'city': city, 'restaurants': restaurants, 'sights': sights, 'hotels': hotels})
 
