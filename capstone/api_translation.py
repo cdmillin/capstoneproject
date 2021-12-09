@@ -36,7 +36,7 @@ class Api_Translation:
 
         city_data = response.json()['results']
         for x in city_data:
-            cities.append(x['id'])
+            cities.append(x['name'])
 
         return cities
 

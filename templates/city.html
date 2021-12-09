@@ -50,7 +50,7 @@ input:checked + label + .content {
 
 <form action = "" method = "POST">
     {% csrf_token %}
-        <h1>{{ city }}</h1>
+        <h1>{{ city }}</h1> <h6><input type=button value="Return" onClick="javascript:history.go(-1);"></h6>
         <input type="checkbox" id="restaurants" hidden />
         <label for="restaurants">Restaurants</label>
         <div class="content">
