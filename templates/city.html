@@ -39,7 +39,7 @@ input:checked + label + .content {
 <ul>
     <li><sitename style="color:white;">Travel Pal</sitename></li>
     <li><a href="">Home</a></li>
-    <li><a href="about">About</a></li>
+    <li><a href="../about">About</a></li>
     <li>
         <form action="", method="post">
             {% csrf_token %}
@@ -51,7 +51,7 @@ input:checked + label + .content {
 <form action = "" method = "POST">
     {% csrf_token %}
         <h1>{{ city }}</h1>
-        <input type="checkbox" id="restaurants" hidden/>
+        <input type="checkbox" id="restaurants" hidden />
         <label for="restaurants">Restaurants</label>
         <div class="content">
         {% for key, value in restaurants.items %}
@@ -62,7 +62,7 @@ input:checked + label + .content {
             </br>
         {% endfor %}
         </div>
-        <input type="checkbox" id="hotels" hidden/>
+        <input type="checkbox" id="hotels" hidden />
         <label for="hotels">Hotels</label>
         <div class="content">
         {% for key, value in hotels.items %}
@@ -73,7 +73,7 @@ input:checked + label + .content {
             </br>
         {% endfor %}
         </div>
-        <input type="checkbox" id="sights" hidden/>
+        <input type="checkbox" id="sights" hidden />
         <label for="sights">Sightseeing</label>
         <div class="content">
         {% for key, value in sights.items %}

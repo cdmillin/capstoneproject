@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from capstone.views import Home, About, City, Refinedsearch
+from capstone.views import Home, About, City, Location
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
@@ -23,6 +23,6 @@ urlpatterns = [
     path('', Home.as_view()),
     path('about/', About.as_view()),
     path('city/',City.as_view()),
-    path('Refinedsearch',Refinedsearch.as_view())
+    path('location',Location.as_view())
 ]
 urlpatterns += staticfiles_urlpatterns()
