@@ -1,0 +1,48 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<style>
+
+.column {
+  float: left;
+  width: 30%;
+  padding: 10px;
+}
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+}
+
+.astext:hover {
+    color:#04AA6D;
+}
+</style>
+
+<ul>
+    <li><sitename style="color:white;">Travel Pal</sitename></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="../about">About</a></li>
+    <li>
+        <form action="", method="post">
+            {% csrf_token %}
+        <input id="location" placeholder="Enter State/Country.." type="text" name="location">
+        </form>
+    </li>
+</ul>
+        {# <h1 align="center">Popular Destinations</h1>     #}
+<form action = "" method = "POST">
+    {% csrf_token %}
+
+    <h1>Your location is: {{ location }}</h1>
+    <h2>Top cities in: {{ location }}</h2>
+        {% for city in cities %}
+            <button class="astext" style="color: blue" type='submit' name="citybtn" value="{{ city }}"> <h2>{{ city }}</h2></button>
+            </br>
+        {% endfor %}
+</form>
+
+{% endblock %}
