@@ -3,8 +3,8 @@ from requests.auth import HTTPBasicAuth
 auth = {'X-Triposo-Account': 'S5H29H39', 'X-Triposo-Token': 'hg4j9s8dqqu0spgwe32c7h71xykwzngq'}
 # hg4j9s8dqqu0spgwe32c7h71xykwzngq = Ben_test api token
 
-class Api_Translation:
 
+class Api_Translation:
     def universal_api_response(self, location, tag_label):
         awaiting_submission = "https://www.triposo.com/api/20211011/poi.json?location_id=" + location + \
                               "&tag_labels=" + tag_label + "&count=2&fields=id,name,score,intro,tag_labels,best_for" \
