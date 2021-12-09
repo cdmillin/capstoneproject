@@ -4,7 +4,6 @@
 
 <style>
 
-
 label {
     display: block;
     padding: 8px 22px;
@@ -40,7 +39,7 @@ input:checked + label + .content {
 <ul>
     <li><sitename style="color:white;">Travel Pal</sitename></li>
     <li><a href="">Home</a></li>
-    <li><a href="../about">About</a></li>
+    <li><a href="about">About</a></li>
     <li>
         <form action="", method="post">
             {% csrf_token %}
@@ -52,7 +51,7 @@ input:checked + label + .content {
 <form action = "" method = "POST">
     {% csrf_token %}
         <h1>{{ city }}</h1>
-        <input type="checkbox" id="restaurants" hidden />
+        <input type="checkbox" id="restaurants" hidden/>
         <label for="restaurants">Restaurants</label>
         <div class="content">
         {% for key, value in restaurants.items %}
@@ -63,7 +62,7 @@ input:checked + label + .content {
             </br>
         {% endfor %}
         </div>
-        <input type="checkbox" id="hotels" hidden />
+        <input type="checkbox" id="hotels" hidden/>
         <label for="hotels">Hotels</label>
         <div class="content">
         {% for key, value in hotels.items %}
@@ -74,7 +73,7 @@ input:checked + label + .content {
             </br>
         {% endfor %}
         </div>
-        <input type="checkbox" id="sights" hidden />
+        <input type="checkbox" id="sights" hidden/>
         <label for="sights">Sightseeing</label>
         <div class="content">
         {% for key, value in sights.items %}
@@ -85,6 +84,50 @@ input:checked + label + .content {
             </br>
         {% endfor %}
         </div>
+        <input type="checkbox" id="transport" hidden/>
+        <label for="transport">Transport</label>
+        <div class="content">
+        {% for key, value in transport.items %}
+            {% for v in value %}
+                <h4>{{ v.0 }}</h4>
+                <h5>{{ v.1 }}</h5>
+            {% endfor %}
+            </br>
+        {% endfor %}
+        </div>
+        <input type="checkbox" id="shopping" hidden/>
+        <label for="shopping">Shopping</label>
+        <div class="content">
+        {% for key, value in shopping.items %}
+            {% for v in value %}
+                <h4>{{ v.0 }}</h4>
+                <h5>{{ v.1 }}</h5>
+            {% endfor %}
+            </br>
+        {% endfor %}
+        </div>
+{#        <input type="checkbox" id="parks" hidden/>#}
+{#        <label for="parks">National Parks</label>#}
+{#        <div class="content">#}
+{#        {% for key, value in parks.items %}#}
+{#            {% for v in value %}#}
+{#                <h4>{{ v.0 }}</h4>#}
+{#                <h5>{{ v.1 }}</h5>#}
+{#            {% endfor %}#}
+{#            </br>#}
+{#        {% endfor %}#}
+{#        </div>#}
+{#        <input type="checkbox" id="beaches" hidden/>#}
+{#        <label for="beaches">Beaches</label>#}
+{#        <div class="content">#}
+{#        {% for key, value in beaches.items %}#}
+{#            {% for v in value %}#}
+{#                <h4>{{ v.0 }}</h4>#}
+{#                <h5>{{ v.1 }}</h5>#}
+{#            {% endfor %}#}
+{#            </br>#}
+{#        {% endfor %}#}
+{#        </div>#}
 </form>
 
 {% endblock %}
