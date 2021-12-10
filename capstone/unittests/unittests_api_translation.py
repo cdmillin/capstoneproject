@@ -29,12 +29,18 @@ class TestBasic(unittest.TestCase):
     def test_top_cities_in_country_response_with_country_and_returns_cities(self):
         api = api_translation.Api_Translation()
         items = api.top_cities_in_country("France")
-        self.assertEqual(items, ["Paris", "Bordeaux"])
+        self.assertEqual(items[0][0], "Paris")
+        self.assertEqual(items[0][1], "Paris")
+        self.assertEqual(items[1][0], "Bordeaux")
+        self.assertEqual(items[1][1], "Bordeaux")
 
     def test_top_cities_in_country_response_with_state_and_returns_cities(self):
         api = api_translation.Api_Translation()
         items = api.top_cities_in_country("Wisconsin")
-        self.assertEqual(items, ["Milwaukee", "Green_Bay2C_Wisconsin"])
+        self.assertEqual(items[0][0], "Milwaukee")
+        self.assertEqual(items[0][1], "Milwaukee")
+        self.assertEqual(items[1][0], "Green Bay")
+        self.assertEqual(items[1][1], "Green_Bay2C_Wisconsin")
 
     def test_top_cities_in_country_response_with_nothing_and_returns_nothing(self):
         api = api_translation.Api_Translation()
