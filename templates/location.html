@@ -47,7 +47,7 @@
     <h1>Your location is: {{ location }}</h1>
     <h2>Top cities in: {{ location }}</h2>
         {% for city in cities %}
-            <button class="astext" style="color: blue" type='submit' name="citybtn" value="{{ city }}"> <h2>{{ city }}</h2></button>
+            <button class="astext" style="color: blue" type='submit' name="citybtn" value="{{ city }}"> <h2>{{ city.0 }}</h2></button>
             </br>
         {% endfor %}
 </form>

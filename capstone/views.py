@@ -4,34 +4,40 @@ from capstone.api_translation import *
 import string
 
 api_translator = Api_Translation()
-# Create your views here.
+
+
+def city_clicked(request):
+    city = request.POST.get('citybtn', "")
+    city = city.split("'")
+    name = city[1]
+    id = city[3]
+
+    restaurants = {name: api_translator.universal_api_response(id, "eatingout")}
+    hotels = {name: api_translator.universal_api_response(id, "hotels")}
+    sights = {name: api_translator.universal_api_response(id, "sightseeing")}
+    transport = {name: api_translator.universal_api_response(id, "transport")}
+    shopping = {name: api_translator.universal_api_response(id, "shopping")}
+    beaches = {name: api_translator.universal_api_response(id, "beaches")}
+    parks = {name: api_translator.universal_api_response(id, "national_parks")}
+
+    return render(request, "city.html", {'city': name, 'restaurants': restaurants, 'sights': sights,
+                                         'hotels': hotels, 'transport': transport, 'shopping': shopping,
+                                         'beaches': beaches, 'parks': parks})
+
+
 class Home(View):
     def get(self, request):
         return render(request, "home.html")
 
     def post(self, request):
+
         if 'citybtn' in request.POST:
-            city = request.POST.get('citybtn', "")
-            city_formatted = city.replace(",", "2C").replace(" ", "_")
-
-            restaurants = {city: api_translator.universal_api_response(city_formatted, "eatingout")}
-            hotels = {city: api_translator.universal_api_response(city_formatted, "hotels")}
-            sights = {city: api_translator.universal_api_response(city_formatted, "sightseeing")}
-            transport = {city: api_translator.universal_api_response(city_formatted, "transport")}
-            shopping = {city: api_translator.universal_api_response(city_formatted, "shopping")}
-            beaches = {city: api_translator.universal_api_response(city_formatted, "beaches")}
-            parks = {city: api_translator.universal_api_response(city_formatted, "national_parks")}
-
-            return render(request, "city.html", {'city': city, 'restaurants': restaurants, 'sights': sights,
-                                                 'hotels': hotels, 'transport': transport, 'shopping': shopping,
-                                                 'beaches': beaches, 'parks': parks})
+            return city_clicked(request)
 
         elif 'location' in request.POST:
             location = str(request.POST.get("location", "")).title()
 
-            top_cities_in_country = api_translator.top_cities_in_country(location)
-
-            cities = [city.replace("2C", ",").replace("_", " ") for city in top_cities_in_country]
+            cities = api_translator.top_cities_in_country(location)
 
             return render(request, "location.html", {'location': location, 'cities': cities})
 
@@ -44,40 +50,28 @@ class About(View):
     def post(self, request):
 
         if 'citybtn' in request.POST:
-            city = request.POST.get('citybtn', "")
-            city_formatted = city.replace(",", "2C").replace(" ", "_")
-
-            restaurants = {city: api_translator.universal_api_response(city_formatted, "eatingout")}
-            hotels = {city: api_translator.universal_api_response(city_formatted, "hotels")}
-            sights = {city: api_translator.universal_api_response(city_formatted, "sightseeing")}
-            transport = {city: api_translator.universal_api_response(city_formatted, "transport")}
-            shopping = {city: api_translator.universal_api_response(city_formatted, "shopping")}
-            beaches = {city: api_translator.universal_api_response(city_formatted, "beaches")}
-            parks = {city: api_translator.universal_api_response(city_formatted, "national_parks")}
-
-            return render(request, "city.html", {'city': city, 'restaurants': restaurants, 'sights': sights,
-                                                 'hotels': hotels, 'transport': transport, 'shopping': shopping,
-                                                 'beaches': beaches, 'parks': parks})
+            return city_clicked(request)
 
         elif 'location' in request.POST:
             location = str(request.POST.get("location", "")).title()
 
-            top_cities_in_country = api_translator.top_cities_in_country(location)
-
-            cities = [city.replace("2C", ",").replace("_", " ") for city in top_cities_in_country]
+            cities = api_translator.top_cities_in_country(location)
 
             return render(request, "location.html", {'location': location, 'cities': cities})
+
 
 class City(View):
     def get(self, request):
         return render(request, "city.html")
 
     def post(self, request):
+        print("City")
+
         if 'citybtn' in request.POST:
             city = request.POST.get('citybtn', "")
-            print(city)
+            city_formatted = city.replace(",", "2C").replace(" ", "_")
 
-        return render(request, "city.html", {'city': city})
+        return render(request, "city.html", {'city': city_formatted})
 
 
 class Location(View):
@@ -86,21 +80,11 @@ class Location(View):
 
     def post(self, request):
         if 'citybtn' in request.POST:
-            city = request.POST.get('citybtn', "")
-            city_formatted = city.replace(",", "2C").replace(" ", "_")
-
-            restaurants = {city: api_translator.find_best_resturants(city_formatted)}
-            hotels = {city: api_translator.find_best_hotels(city_formatted)}
-            sights = {city: api_translator.find_best_sightseeing(city_formatted)}
-
-            return render(request, "city.html",
-                          {'city': city, 'restaurants': restaurants, 'sights': sights, 'hotels': hotels})
+            return city_clicked(request)
 
         elif 'location' in request.POST:
             location = str(request.POST.get("location", "")).title()
 
-            top_cities_in_country = api_translator.top_cities_in_country(location)
-
-            cities = [city.replace("2C", ",").replace("_", " ") for city in top_cities_in_country]
+            cities = api_translator.top_cities_in_country(location)
 
             return render(request, "location.html", {'location': location, 'cities': cities})
