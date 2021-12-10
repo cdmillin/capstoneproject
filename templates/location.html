@@ -1,0 +1,71 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<style>
+
+.column {
+  float: left;
+  width: 30%;
+  padding: 10px;
+}
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+}
+
+.astext:hover {
+    color:#04AA6D;
+}
+
+.footer {
+  padding: 0;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+</style>
+
+<ul>
+    <li><sitename style="color:white;">Travel Pal</sitename></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="../about">About</a></li>
+    <li>
+        <form action="", method="post">
+            {% csrf_token %}
+        <input id="location" placeholder="Enter State/Country.." type="text" name="location">
+        </form>
+    </li>
+</ul>
+        {# <h1 align="center">Popular Destinations</h1>     #}
+<form action = "" method = "POST">
+    {% csrf_token %}
+
+    <h1>Your location is: {{ location }}</h1>
+    <h2>Top cities in: {{ location }}</h2>
+        {% for city in cities %}
+            <button class="astext" style="color: blue" type='submit' name="citybtn" value="{{ city }}"> <h2>{{ city.0 }}</h2></button>
+            </br>
+        {% endfor %}
+</form>
+<table>
+    <tr>
+            <th>
+                <img src="https://wttc.org/DesktopModules/MVC/NewsArticleList/images/141_20201013185512_Consumer%20Survey%20Finds%2070%20Percent%20of%20Travelers%20Plan%20to%20Holiday%20in%202021.jpg" alt="" style="width:100%">
+            </th>
+            <th>
+                <img src="https://content.presspage.com/uploads/1376/1920_sustainabletravel.jpg?10000" alt="" style="width:100%">
+            </th>
+            <th>
+                <img src="https://www.traveloffpath.com/wp-content/uploads/2021/10/Encouraging-Travel-And-Hotel-Occupancy-Figures-Project-A-Busy-Winter-Of-Travel.jpg" alt="" style="width:100%">
+            </th>
+    </tr>
+</table>
+    <footer class="footer">
+        <h1>Adventure Awaits</h1>
+    </footer>
+
+{% endblock %}
